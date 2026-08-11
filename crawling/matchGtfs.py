@@ -88,6 +88,7 @@ def mergeRouteAsCircularRoute(routeA, routeB):
       "serviceType": routeA["serviceType"],
       "stops": routeA['stops'] + routeB['stops'],
       "virtual": True,
+      "loopFrom": len(routeA['stops']),
   }
 
 
@@ -159,6 +160,10 @@ def matchRoutes(co):
                           gtfsRoute['orig']['zh'])))):
             ret, avgDist = matchStopsByDp([stopList[stop] for stop in route['stops']], [
                                           gtfsStops[stop] for stop in stops], co, debug)
+            # a merged circular must use routeB beyond the shared terminus
+            if 'loopFrom' in route and sum(
+                    1 for i, j in ret if j >= route['loopFrom']) < 2:
+              continue
             if avgDist < bestMatch[1]:
               bestMatch = (gtfsId, avgDist, ret, bound, stops, route)
 
