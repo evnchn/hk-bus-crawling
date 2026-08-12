@@ -1,0 +1,978 @@
+{
+ "total": 3947,
+ "unmatched": 321,
+ "perOperator": {
+  "ctb": 101,
+  "hkkf": 2,
+  "kmb": 135,
+  "lightRail": 27,
+  "lrtfeeder": 15,
+  "mtr": 24,
+  "nlb": 17
+ },
+ "routeDirs": {
+  "1+1+Mui Wo Ferry Pier+Tai O": [
+   "nlb"
+  ],
+  "1+1+Tai O+Mui Wo Ferry Pier": [
+   "nlb"
+  ],
+  "101+2+KWUN TONG (YUE MAN SQUARE)+DES VOEUX RD CENTRAL": [
+   "kmb"
+  ],
+  "101+3+KWUN TONG (YUE MAN SQUARE)+BELCHER'S STREET": [
+   "kmb"
+  ],
+  "101R+1+HAPPY VALLEY RACE COURSE+KWUN TONG (YUE MAN SQUARE)": [
+   "kmb"
+  ],
+  "101R+1+Happy Valley Racecourse+Kwun Tong (Yue Man Square)": [
+   "ctb"
+  ],
+  "102R+1+HAPPY VALLEY RACE COURSE+MEI FOO": [
+   "kmb"
+  ],
+  "102R+1+Happy Valley Racecourse+Mei Foo": [
+   "ctb"
+  ],
+  "104R+1+Central (Ferry Piers)+Mong Kok": [
+   "ctb"
+  ],
+  "11+1+Jardine's Lookout+Central (Ferry Piers)": [
+   "ctb"
+  ],
+  "11+1+Tai O (from Sha Tsui)+Tung Chung Station Bus Terminus": [
+   "nlb"
+  ],
+  "11+1+Tai O (from Shui Hau)+Tung Chung Station Bus Terminus": [
+   "nlb"
+  ],
+  "11+1+Tai O+Tung Chung Station Bus Terminus": [
+   "nlb"
+  ],
+  "11+1+Tung Chung Station Bus Terminus+Tai O": [
+   "nlb"
+  ],
+  "110+1+Tsim Sha Tsui (Mody Road)+Shau Kei Wan": [
+   "ctb"
+  ],
+  "118P+4+SIU SAI WAN (ISLAND RESORT)+KEI WING PRIMARY SCHOOL": [
+   "kmb"
+  ],
+  "118R+1+SIU SAI WAN SPORTS GROUND+MONG KOK": [
+   "kmb"
+  ],
+  "118R+1+Siu Sai Wan Sports Ground+Mong Kok": [
+   "ctb"
+  ],
+  "12+1+Central Pier 3+Robinson Road ／ Park Road": [
+   "ctb"
+  ],
+  "12+1+Robinson Road ／ Park Road+Central Pier 3": [
+   "ctb"
+  ],
+  "14S+1+YAU TONG (LEI YUE MUN ROAD)+TSEUNG KWAN O CHINESE PERMANENT CEMETERY(CIRCULAR)": [
+   "kmb"
+  ],
+  "170+1+Wah Fu (Central)+Sha Tin Station": [
+   "ctb"
+  ],
+  "1M+1+Exhibition Centre Station+Happy Valley ／ Wong Nai Chung Gap": [
+   "ctb"
+  ],
+  "1M+1+Happy Valley ／ Wong Nai Chung Gap+Exhibition Centre Station": [
+   "ctb"
+  ],
+  "20R+1+Kai Tak Cruise Terminal+Tsim Sha Tsui ／ High Speed Rail West Kowloon Station": [
+   "ctb"
+  ],
+  "20R+1+Tsim Sha Tsui ／ High Speed Rail West Kowloon Station+Kai Tak Cruise Terminal": [
+   "ctb"
+  ],
+  "215R+1+HONG KONG COLISEUM+SHUN TIN": [
+   "kmb"
+  ],
+  "224R+1+HONG KONG COLISEUM+WONG TAI SIN": [
+   "kmb"
+  ],
+  "22D+1+Kai Tak Runway Area+Kai Tak Station": [
+   "ctb"
+  ],
+  "22D+1+Kai Tak Station+Kai Tak Runway Area": [
+   "ctb"
+  ],
+  "22M+1+Kai Tak Cruise Terminal+To Kwa Wan": [
+   "ctb"
+  ],
+  "22M+1+To Kwa Wan+Kai Tak Cruise Terminal": [
+   "ctb"
+  ],
+  "22R+1+Kai Tak Cruise Terminal+Kai Tak Station": [
+   "ctb"
+  ],
+  "22R+1+Kai Tak Station+Kai Tak Cruise Terminal": [
+   "ctb"
+  ],
+  "22X+1+Kai Tak Station+One Victoria": [
+   "ctb"
+  ],
+  "23+2+SHUN TIN+KWUN TONG FERRY": [
+   "kmb"
+  ],
+  "25+1+Braemar Hill+Central (Pier 3／5)": [
+   "ctb"
+  ],
+  "251C+2+KONG HA WAI+YUEN LONG (HONG LOK ROAD)": [
+   "kmb"
+  ],
+  "259R+1+HONG KONG COLISEUM+TUEN MUN PIER HEAD": [
+   "kmb"
+  ],
+  "25A+1+Braemar Hill+Exhibition Centre Station": [
+   "ctb"
+  ],
+  "25A+1+Exhibition Centre Station+Braemar Hill": [
+   "ctb"
+  ],
+  "26+1+Hollywood Road+Lai Tak Tsuen": [
+   "ctb"
+  ],
+  "26+1+Lai Tak Tsuen+Hollywood Road": [
+   "ctb"
+  ],
+  "260R+1+HONG KONG COLISEUM+TUEN MUN (SIU HONG COURT)": [
+   "kmb"
+  ],
+  "268C+2+TING FU STREET KWUN TONG+LONG PING STATION": [
+   "kmb"
+  ],
+  "269R+1+HONG KONG COLISEUM+TIN HENG ESTATE": [
+   "kmb"
+  ],
+  "27+1+Braemar Hill+North Point Ferry Pier": [
+   "ctb"
+  ],
+  "270B+2+SHEUNG SHUI+CHARMING GARDEN": [
+   "kmb"
+  ],
+  "270R+1+HONG KONG COLISEUM+FANLING (LUEN WO HUI)": [
+   "kmb"
+  ],
+  "271R+1+HONG KONG COLISEUM+TAI PO (TAI WO)": [
+   "kmb"
+  ],
+  "273B+2+SHEUNG SHUI (CHING HO)+SHEUNG SHUI STATION": [
+   "kmb"
+  ],
+  "279S+1+TSING YI (CHEUNG CHING ESTATE)+WO HOP SHEK": [
+   "kmb"
+  ],
+  "279S+1+WO HOP SHEK+TSING YI (CHEUNG CHING ESTATE)": [
+   "kmb"
+  ],
+  "285A+2+FO TAN STATION+FO TAN CHUN YEUNG ESTATE": [
+   "kmb"
+  ],
+  "30+2+KWAI CHUNG (LAI YIU ESTATE)+TSUEN WAN (ALLWAY GARDENS)": [
+   "kmb"
+  ],
+  "307+3+TAI PO CENTRAL+SHEUNG WAN": [
+   "kmb"
+  ],
+  "314+1+Siu Sai Wan (Island Resort)+Stanley (Beach ／ Market)": [
+   "ctb"
+  ],
+  "314+1+Stanley (Beach ／ Market)+Siu Sai Wan (Island Resort)": [
+   "ctb"
+  ],
+  "32P+1+TSUEN WAN (CASTLE PEAK ROAD)+YUEN YUEN INSTITUTE": [
+   "kmb"
+  ],
+  "32P+1+YUEN YUEN INSTITUTE+TSUEN WAN (CASTLE PEAK ROAD)": [
+   "kmb"
+  ],
+  "331+1+MA WAN(PAK YAN ROAD)+TSUEN WAN STATION": [
+   "kmb"
+  ],
+  "331+1+TSUEN WAN STATION+MA WAN(PAK YAN ROAD)": [
+   "kmb"
+  ],
+  "331S+1+MA WAN(PAK YAN ROAD)+TSUEN WAN WEST STATION": [
+   "kmb"
+  ],
+  "331S+1+TSUEN WAN WEST STATION+MA WAN(PAK YAN ROAD)": [
+   "kmb"
+  ],
+  "34+2+FU ON HOUSE, TAI WO HAU ROAD+KWAI SHING (CENTRAL)": [
+   "kmb"
+  ],
+  "34S+5+Tung Chung Tat Tung Road Bus Terminus+Cemetery Area No. 18 (Circular)": [
+   "nlb"
+  ],
+  "36R+1+HONG KONG COLISEUM+SHEK WAI KOK": [
+   "kmb"
+  ],
+  "388+1+Chai Wan Station+Chai Wan Cemeteries ／ Cape Collinson": [
+   "ctb"
+  ],
+  "389+1+Shau Kei Wan+Chai Wan Cemeteries ／ Cape Collinson": [
+   "ctb"
+  ],
+  "38S+1+Causeway Bay (Central Library)+Chi Fu Fa Yuen": [
+   "ctb"
+  ],
+  "38S+1+KWAI FONG STATION+TSUEN WAN CHINESE CEMETERY": [
+   "kmb"
+  ],
+  "38S+1+TSUEN WAN CHINESE CEMETERY+KWAI FONG STATION": [
+   "kmb"
+  ],
+  "3M+1+Mui Wo Ferry Pier+Tung Chung Station Bus Terminus": [
+   "nlb"
+  ],
+  "3M+1+Tung Chung Station Bus Terminus+Mui Wo Ferry Pier": [
+   "nlb"
+  ],
+  "3S+1+DIAMOND HILL STATION+DIAMOND HILL CEMETERY (CIRCULAR)": [
+   "kmb"
+  ],
+  "4+1+Mui Wo Ferry Pier+Tong Fuk (to Shui Hau)": [
+   "nlb"
+  ],
+  "4+1+Tong Fuk (from Shui Hau)+Mui Wo Ferry Pier": [
+   "nlb"
+  ],
+  "4+1+Tong Fuk+Mui Wo Ferry Pier": [
+   "nlb"
+  ],
+  "41R+1+HONG KONG COLISEUM+TSING YI (CHEUNG CHING ESTATE)": [
+   "kmb"
+  ],
+  "44M+2+TSING YI (CHEUNG ON ESTATE)+KWAI HING STATION": [
+   "kmb"
+  ],
+  "46R+1+NGONG SHUEN CHAU BARRACKS+TAI WAI STATION": [
+   "kmb"
+  ],
+  "46R+1+TAI WAI STATION+NGONG SHUEN CHAU BARRACKS": [
+   "kmb"
+  ],
+  "48+1+Wah Fu (North)+Sham Wan ／ Ocean Park": [
+   "ctb"
+  ],
+  "505+1+Sam Shing+Siu Hong": [
+   "lightRail"
+  ],
+  "505+1+Siu Hong+Sam Shing": [
+   "lightRail"
+  ],
+  "506P*+1+Tuen Mun Ferry Pier+Siu Hong": [
+   "lightRail"
+  ],
+  "507+1+Tin King+Tuen Mun Ferry Pier": [
+   "lightRail"
+  ],
+  "507+1+Tuen Mun Ferry Pier+Tin King": [
+   "lightRail"
+  ],
+  "507P*+1+Siu Hong+Tuen Mun Ferry Pier": [
+   "lightRail"
+  ],
+  "50M+1+Tuen Mun Station+Ching Tin Estate": [
+   "ctb"
+  ],
+  "50R+1+Hong Kong Coliseum+Tuen Mun (Ching Tin and Wo Tin)": [
+   "ctb"
+  ],
+  "582+1+GO PARK Sai Sha ／ Sai Sha Residences+Pak Shek Kok (Via University Station)": [
+   "ctb"
+  ],
+  "582+1+Pak Shek Kok (Via University Station)+GO PARK Sai Sha ／ Sai Sha Residences": [
+   "ctb"
+  ],
+  "595+1+Shek Pai Wan (via Aberdeen)+South Horizons": [
+   "ctb"
+  ],
+  "595+1+South Horizons+Shek Pai Wan (via Aberdeen)": [
+   "ctb"
+  ],
+  "5R+2+KAI TAK CRUISE TERMINAL+KWUN TONG (apm)": [
+   "kmb"
+  ],
+  "610+1+Tuen Mun Ferry Pier+Yuen Long": [
+   "lightRail"
+  ],
+  "610+1+Yuen Long+Tuen Mun Ferry Pier": [
+   "lightRail"
+  ],
+  "614+1+Tuen Mun Ferry Pier+Yuen Long": [
+   "lightRail"
+  ],
+  "614+1+Yuen Long+Tuen Mun Ferry Pier": [
+   "lightRail"
+  ],
+  "614P+1+Siu Hong+Tuen Mun Ferry Pier": [
+   "lightRail"
+  ],
+  "614P+1+Tuen Mun Ferry Pier+Siu Hong": [
+   "lightRail"
+  ],
+  "615+1+Tuen Mun Ferry Pier+Yuen Long": [
+   "lightRail"
+  ],
+  "615+1+Yuen Long+Tuen Mun Ferry Pier": [
+   "lightRail"
+  ],
+  "615P+1+Siu Hong+Tuen Mun Ferry Pier": [
+   "lightRail"
+  ],
+  "615P+1+Tuen Mun Ferry Pier+Siu Hong": [
+   "lightRail"
+  ],
+  "61R+1+City One Shatin+Lam Tin Station": [
+   "ctb"
+  ],
+  "61R+1+Lam Tin Station+City One Shatin": [
+   "ctb"
+  ],
+  "629+1+Ocean Park (Main Entrance ／ Water World)+Central (Star Ferry)": [
+   "ctb"
+  ],
+  "629M+1+Ocean Park (Water World)+Wong Chuk Hang Station": [
+   "ctb"
+  ],
+  "63R+1+LAM TSUEN WISHING TREE+TAI PO MARKET STATION": [
+   "kmb"
+  ],
+  "63R+1+TAI PO MARKET STATION+LAM TSUEN WISHING TREE": [
+   "kmb"
+  ],
+  "64K+3+KAM SHEUNG ROAD STATION+SHEUNG TSUEN": [
+   "kmb"
+  ],
+  "68R+1+TAI TONG+YOHO MALL (YUEN LONG)": [
+   "kmb"
+  ],
+  "68R+1+YOHO MALL (YUEN LONG)+TAI TONG": [
+   "kmb"
+  ],
+  "6R+1+MEI FOO (MEI LAI ROAD)+NGONG SHUEN CHAU BARRACKS (CIRCULAR)": [
+   "kmb"
+  ],
+  "701+1+Hoi Lai Estate ／ Nam Cheong Station+Mong Kok": [
+   "ctb"
+  ],
+  "701+1+Mong Kok+Hoi Lai Estate ／ Nam Cheong Station": [
+   "ctb"
+  ],
+  "701A+1+Hoi Ying Estate+Mong Kok": [
+   "ctb"
+  ],
+  "701A+1+Mong Kok+Hoi Ying Estate": [
+   "ctb"
+  ],
+  "701S+1+Hoi Lai Estate ／ Nam Cheong Station+Mong Kok": [
+   "ctb"
+  ],
+  "701S+1+Mong Kok+Hoi Lai Estate ／ Nam Cheong Station": [
+   "ctb"
+  ],
+  "702B+1+Hoi Ying Estate+Pak Tin (North)": [
+   "ctb"
+  ],
+  "702B+1+Pak Tin (North)+Hoi Ying Estate": [
+   "ctb"
+  ],
+  "702S+1+So Uk Estate+Banyan Garden ／ Fu Cheong Estate": [
+   "ctb"
+  ],
+  "705+1+Tin Shui Wai+Tin Shui Wai (Circular)": [
+   "lightRail"
+  ],
+  "706+1+Tin Shui Wai+Tin Shui Wai (Circular)": [
+   "lightRail"
+  ],
+  "70K+2+SHEUNG SHUI (CHING HO)+FANLING (WAH MING)": [
+   "kmb"
+  ],
+  "70S+1+HUNG HOM STATION+WO HOP SHEK": [
+   "kmb"
+  ],
+  "70S+1+WO HOP SHEK+HUNG HOM STATION": [
+   "kmb"
+  ],
+  "71P+1+TAI PO (TAI WO)+FU SHIN ／ FU HENG ／ FU TIP (CIRCULAR)": [
+   "kmb"
+  ],
+  "720*+1+Siu Hong+Tin Wing": [
+   "lightRail"
+  ],
+  "720P+1+Central (Wing Wo Street)+Taikoo Shing": [
+   "ctb"
+  ],
+  "722+1+Central (Ferry Piers)+Yiu Tung Estate": [
+   "ctb"
+  ],
+  "73B+3+CHUEN ON ROAD (NETHERSOLE HOSPITAL)+SHEUNG SHUI STATION": [
+   "kmb"
+  ],
+  "73S+1+FANLING STATION+WO HOP SHEK (KIU TAU ROAD)": [
+   "kmb"
+  ],
+  "73S+1+Stanley Market+Ocean Park": [
+   "ctb"
+  ],
+  "73S+1+WO HOP SHEK (KIU TAU ROAD)+FANLING STATION": [
+   "kmb"
+  ],
+  "73S+2+FANLING STATION+WO HOP SHEK (KIU TAU ROAD)": [
+   "kmb"
+  ],
+  "74S+1+PING TIN+WO HOP SHEK": [
+   "kmb"
+  ],
+  "74S+1+WO HOP SHEK+PING TIN": [
+   "kmb"
+  ],
+  "751*+1+Tin Yat+Tuen Mun Ferry Pier": [
+   "lightRail"
+  ],
+  "751+1+Tin Yat+Yau Oi": [
+   "lightRail"
+  ],
+  "751+1+Yau Oi+Tin Yat": [
+   "lightRail"
+  ],
+  "751P+1+Tin Shui Wai+Tin Yat": [
+   "lightRail"
+  ],
+  "751P+1+Tin Yat+Tin Shui Wai": [
+   "lightRail"
+  ],
+  "76+1+Causeway Bay (Pennington Street)+Wong Chuk Hang Station ／ Shek Pai Wan": [
+   "ctb"
+  ],
+  "761P+1+Tin Yat+Yuen Long": [
+   "lightRail"
+  ],
+  "761P+1+Yuen Long+Tin Yat": [
+   "lightRail"
+  ],
+  "76S+1+FANLING STATION+WO HOP SHEK": [
+   "kmb"
+  ],
+  "76S+1+WO HOP SHEK+FANLING STATION": [
+   "kmb"
+  ],
+  "78+1+Wong Chuk Hang+Wah Kwai Estate": [
+   "ctb"
+  ],
+  "78A+4+QUEEN'S HILL+FANLING STATION": [
+   "kmb"
+  ],
+  "796P+1+Tseung Kwan O Station+Tsim Sha Tsui East": [
+   "ctb"
+  ],
+  "796R+1+Hong Kong Coliseum+LOHAS Park": [
+   "ctb"
+  ],
+  "796S+1+Ngau Tau Kok Station+Tseung Kwan O Station": [
+   "ctb"
+  ],
+  "796S+1+Tseung Kwan O Station+Ngau Tau Kok Station": [
+   "ctb"
+  ],
+  "796X+1+Hung Hom and To Kwa Wan+LOHAS Park": [
+   "ctb"
+  ],
+  "796X+1+LOHAS Park+Hung Hom and To Kwa Wan": [
+   "ctb"
+  ],
+  "797+1+Kai Tak+LOHAS Park ／ Tseung Kwan O Industrial Estate": [
+   "ctb"
+  ],
+  "798P+1+Tseung Kwan O Industrial Estate+Tai Wai Station (via: Sha Tin)": [
+   "ctb"
+  ],
+  "7S+5+Lai Chi Yuen Cemetery+Mui Wo Ferry Pier": [
+   "nlb"
+  ],
+  "7S+5+Mui Wo Ferry Pier+Lai Chi Yuen Cemetery": [
+   "nlb"
+  ],
+  "82X+1+Siu Sai Wan (Island Resort)+Quarry Bay": [
+   "ctb"
+  ],
+  "848+1+SHATIN RACE COURSE+KWAI FONG STATION": [
+   "kmb"
+  ],
+  "85A+1+Braemar Hill+Shau Kei Wan": [
+   "ctb"
+  ],
+  "868+1+SHATIN RACE COURSE+TUEN MUN CENTRAL": [
+   "kmb"
+  ],
+  "868+1+TUEN MUN CENTRAL+SHATIN RACE COURSE": [
+   "kmb"
+  ],
+  "869+1+SHATIN RACE COURSE+TIN SHUI WAI TOWN CENTRE": [
+   "kmb"
+  ],
+  "872+1+SHATIN RACE COURSE+TAI PO CENTRAL": [
+   "kmb"
+  ],
+  "872X+1+SHATIN RACE COURSE+TAI PO CENTRAL": [
+   "kmb"
+  ],
+  "87R+1+HONG KONG COLISEUM+WU KAI SHA STATION": [
+   "kmb"
+  ],
+  "887+1+SHATIN RACE COURSE+MONG KOK (PARK AVENUE)": [
+   "kmb"
+  ],
+  "888+1+SHATIN RACE COURSE+SHATIN STATION": [
+   "kmb"
+  ],
+  "889+1+SHATIN RACE COURSE+PING TIN": [
+   "kmb"
+  ],
+  "88R+1+Central+City One Shatin": [
+   "ctb"
+  ],
+  "88R+1+City One Shatin+Central": [
+   "ctb"
+  ],
+  "891+1+SHATIN RACE COURSE+KOWLOON CITY FERRY": [
+   "kmb"
+  ],
+  "893+1+SHATIN RACE COURSE+HONG SING GARDEN": [
+   "kmb"
+  ],
+  "917+1+FAN KAM ROAD+WAN CHAI": [
+   "kmb"
+  ],
+  "917+1+WAN CHAI+FAN KAM ROAD": [
+   "kmb"
+  ],
+  "918+1+LAM KAM ROAD+WAN CHAI": [
+   "kmb"
+  ],
+  "918+1+WAN CHAI+LAM KAM ROAD": [
+   "kmb"
+  ],
+  "91B+1+HANG HAU STATION+HKUST": [
+   "kmb"
+  ],
+  "945+1+NORTH POINT+YUEN LONG(FUNG CHEUNG ROAD)": [
+   "kmb"
+  ],
+  "945+1+YUEN LONG(FUNG CHEUNG ROAD)+NORTH POINT": [
+   "kmb"
+  ],
+  "94A+1+Lei Tung Estate+Wah Fu (Central)": [
+   "ctb"
+  ],
+  "95C+1+Ap Lei Chau Estate ／ Lee Nam Industrial Area+Chi Fu Fa Yuen": [
+   "ctb"
+  ],
+  "95C+1+Chi Fu Fa Yuen+Ap Lei Chau Estate ／ Lee Nam Industrial Area": [
+   "ctb"
+  ],
+  "962+1+Causeway Bay (Moreton Terrace)+Tuen Mun (Lung Mun Oasis)": [
+   "ctb"
+  ],
+  "962C+1+Tai Koo (Kornhill Plaza)+Tuen Mun (Lung Mun Oasis)": [
+   "ctb"
+  ],
+  "962X+1+Causeway Bay (Moreton Terrace)+Tuen Mun (Lung Mun Oasis)": [
+   "ctb"
+  ],
+  "968+3+FLEMING ROAD+YUEN LONG (WEST)": [
+   "kmb"
+  ],
+  "98+3+TSEUNG KWAN O INDUSTRIAL ESTATE+NGAU TAU KOK STATION": [
+   "kmb"
+  ],
+  "989+1+Fo Tan (Chun Yeung Estate)+Sai Wan Ho": [
+   "ctb"
+  ],
+  "98A+3+NGAU TAU KOK STATION+HANG HAU (NORTH) (TSEUNG KWAN O HOSPITAL)": [
+   "kmb"
+  ],
+  "98R+1+HONG KONG COLISEUM+HANG HAU (NORTH) (TSEUNG KWAN O HOSPITAL)": [
+   "kmb"
+  ],
+  "A21+1+Airport (via HZMB Hong Kong Port)+Hung Hom Station": [
+   "ctb"
+  ],
+  "A25S+1+Kai Tak Sports Park+Airport (via HZMB Hong Kong Port)": [
+   "ctb"
+  ],
+  "A35+1+HZMB Hong Kong Port+Mui Wo Ferry Pier": [
+   "nlb"
+  ],
+  "A35+1+Mui Wo Ferry Pier+HZMB Hong Kong Port": [
+   "nlb"
+  ],
+  "A36+5+KAM SHEUNG ROAD STATION+AIRPORT (GROUND TRANSPORTATION CENTRE)": [
+   "kmb"
+  ],
+  "AEL+1+AsiaWorld-Expo+Hong Kong": [
+   "mtr"
+  ],
+  "AEL+1+Hong Kong+AsiaWorld-Expo": [
+   "mtr"
+  ],
+  "B9+1+HEUNG YUEN WAI ‧ LIANTANG PORT+TUEN MUN STATION": [
+   "kmb"
+  ],
+  "B9+2+YUEN LONG (LONG YAT ROAD)+HEUNG YUEN WAI ‧ LIANTANG PORT": [
+   "kmb"
+  ],
+  "B9+3+TUEN MUN STATION+HEUNG YUEN WAI ‧ LIANTANG PORT": [
+   "kmb"
+  ],
+  "DRL+1+Disneyland Resort+Sunny Bay": [
+   "mtr"
+  ],
+  "DRL+1+Sunny Bay+Disneyland Resort": [
+   "mtr"
+  ],
+  "EAL+1+Admiralty+Lo Wu": [
+   "mtr"
+  ],
+  "EAL+1+Admiralty+Lok Ma Chau": [
+   "mtr"
+  ],
+  "EAL+1+Lo Wu+Admiralty": [
+   "mtr"
+  ],
+  "EAL+1+Lok Ma Chau+Admiralty": [
+   "mtr"
+  ],
+  "H20+1+Kai Tak Cruise Terminal+Tsim Sha Tsui": [
+   "ctb"
+  ],
+  "H2K+1+Central Ferry - Star Ferry+West Kowloon Cultural District": [
+   "ctb"
+  ],
+  "H2K+1+West Kowloon Cultural District+Central Ferry - Star Ferry": [
+   "ctb"
+  ],
+  "ISL+1+Chai Wan+Kennedy Town": [
+   "mtr"
+  ],
+  "ISL+1+Kennedy Town+Chai Wan": [
+   "mtr"
+  ],
+  "K12+1+Eightland Garden+Tai Po Market Station": [
+   "lrtfeeder"
+  ],
+  "K12+1+Tai Po Market Station+Eightland Garden": [
+   "lrtfeeder"
+  ],
+  "K14+1+Tai Po Mega Mall+Tai Po Market Station": [
+   "lrtfeeder"
+  ],
+  "K17+1+Fu Shin+Tai Po Market Station": [
+   "lrtfeeder"
+  ],
+  "K17+1+Tai Po Market Station+Fu Shin": [
+   "lrtfeeder"
+  ],
+  "K18+1+Kwong Fuk+Tai Po Market Station": [
+   "lrtfeeder"
+  ],
+  "K18+1+Tai Po Market Station+Kwong Fuk": [
+   "lrtfeeder"
+  ],
+  "K51+3+Siu Hong Station+Fu Tai": [
+   "lrtfeeder"
+  ],
+  "K52+2+LR Tuen Mun Stop+Lung Kwu Tan": [
+   "lrtfeeder"
+  ],
+  "K66+2+Tai Tong Wong Nai Tun Tsuen+Yuet Ping House, Long Ping Estate ": [
+   "lrtfeeder"
+  ],
+  "K66+4+Nam Hang Pai+Long Ping": [
+   "lrtfeeder"
+  ],
+  "K68+3+Yuen Long Plaza+Yuen Long Industrial Estate": [
+   "lrtfeeder"
+  ],
+  "K68+4+Tai Kiu Tsuen+Yuen Long Industrial Estate": [
+   "lrtfeeder"
+  ],
+  "K75P+1+Hung Shui Kiu Bus Depot+Tin Shui": [
+   "lrtfeeder"
+  ],
+  "K75S+1+Hung Shui Kiu Bus Depot+Tin Shui Wai Station": [
+   "lrtfeeder"
+  ],
+  "KF4+1+Hei Ling Chau Public Pier+Peng Chau Pier": [
+   "hkkf"
+  ],
+  "KF4+1+Peng Chau Pier+Hei Ling Chau Public Pier": [
+   "hkkf"
+  ],
+  "KTL+1+Tiu Keng Leng+Whampoa": [
+   "mtr"
+  ],
+  "KTL+1+Whampoa+Tiu Keng Leng": [
+   "mtr"
+  ],
+  "N116+1+NORTH POINT+TSZ WAN SHAN (CENTRAL)": [
+   "kmb"
+  ],
+  "N243+1+TSING YI STATION+CHEUNG CHING (CIRCULAR)": [
+   "kmb"
+  ],
+  "N276+1+SAN TIN PUBLIC TRANSPORT INTERCHANGE+TIN TSZ": [
+   "kmb"
+  ],
+  "N276+1+TIN TSZ+SAN TIN PUBLIC TRANSPORT INTERCHANGE": [
+   "kmb"
+  ],
+  "N43+1+TSUEN WAN STATION+TSING YI (CHEUNG WANG ESTATE)": [
+   "kmb"
+  ],
+  "N48+1+TSUEN WAN (BAYVIEW GARDEN)+YU CHUI COURT": [
+   "kmb"
+  ],
+  "N48+1+YU CHUI COURT+TSUEN WAN (BAYVIEW GARDEN)": [
+   "kmb"
+  ],
+  "N796+1+LOHAS Park+Mongkok (via Tsim Sha Tsui)": [
+   "ctb"
+  ],
+  "N8P+1+Siu Sai Wan (Island Resort)+Wan Chai (Harbour Road)": [
+   "ctb"
+  ],
+  "N8P+1+Wan Chai (Harbour Road)+Siu Sai Wan (Island Resort)": [
+   "ctb"
+  ],
+  "N962+1+Causeway Bay (Moreton Terrace)+Tuen Mun (Lung Mun Oasis)": [
+   "ctb"
+  ],
+  "NA21+1+Airport ／ HZMB Hong Kong Port+Mongkok ／  Nam Cheong": [
+   "ctb"
+  ],
+  "NA21+1+Mongkok ／  Nam Cheong+Airport ／ HZMB Hong Kong Port": [
+   "ctb"
+  ],
+  "NB2+7+Shenzhen Bay Port+Yuen Long MTR Station (Circular)": [
+   "nlb"
+  ],
+  "NB3+1+Shenzhen Bay Port+Tuen Mun Pier Head": [
+   "ctb"
+  ],
+  "NB3+1+Tuen Mun Pier Head+Shenzhen Bay Port": [
+   "ctb"
+  ],
+  "PB1+1+GO PARK+Sheung Shui": [
+   "kmb"
+  ],
+  "PB1+1+Sheung Shui+GO PARK": [
+   "kmb"
+  ],
+  "PB1+2+GO PARK+Sheung Shui": [
+   "kmb"
+  ],
+  "PB1+2+Sheung Shui+GO PARK": [
+   "kmb"
+  ],
+  "PB2+1+GO PARK+Hong Kong Palace Museum": [
+   "kmb"
+  ],
+  "PB2+1+Hong Kong Palace Museum+GO PARK": [
+   "kmb"
+  ],
+  "PB2+2+GO PARK+KAI TAK (MUK YUEN STREET)": [
+   "kmb"
+  ],
+  "PB2+2+KAI TAK (MUK YUEN STREET)+GO PARK": [
+   "kmb"
+  ],
+  "PB3+1+Hong Kong Palace Museum+Kornhill Plaza": [
+   "kmb"
+  ],
+  "PB3+1+Kornhill Plaza+Hong Kong Palace Museum": [
+   "kmb"
+  ],
+  "PB4+1+HONG KONG PALACE MUSEUM+YOHO MALL (YUEN LONG)": [
+   "kmb"
+  ],
+  "PB4+1+YOHO MALL (YUEN LONG)+HONG KONG PALACE MUSEUM": [
+   "kmb"
+  ],
+  "PB4+2+HONG KONG PALACE MUSEUM+YOHO MALL (YUEN LONG)": [
+   "kmb"
+  ],
+  "PB4+2+YOHO MALL (YUEN LONG)+HONG KONG PALACE MUSEUM": [
+   "kmb"
+  ],
+  "PB5+1+DISCOVERY BAY PLAZA+HONG KONG PALACE MUSEUM": [
+   "kmb"
+  ],
+  "PB5+1+HONG KONG PALACE MUSEUM+DISCOVERY BAY PLAZA": [
+   "kmb"
+  ],
+  "R108+1+KAI YIP+CAUSEWAY BAY (VICTORIA PARK)": [
+   "kmb"
+  ],
+  "R11+1+Disneyland+North Point Ferry Pier": [
+   "ctb"
+  ],
+  "R215+1+LAM TIN (KWONG TIN ESTATE)+TSIM SHA TSUI EAST (MODY ROAD)": [
+   "kmb"
+  ],
+  "R22+1+Disneyland+Yau Tong": [
+   "ctb"
+  ],
+  "R230+1+TSUEN WAN (ALLWAY GARDENS)+TSIM SHA TSUI EAST (MODY ROAD)": [
+   "kmb"
+  ],
+  "R241+1+TSING YI (CHEUNG WANG ESTATE)+TSIM SHA TSUI EAST (MODY ROAD)": [
+   "kmb"
+  ],
+  "R298+1+HONG SING GARDEN+TSIM SHA TSUI EAST (MODY ROAD)": [
+   "kmb"
+  ],
+  "R603+1+ON TAI (WEST)+CAUSEWAY BAY (VICTORIA PARK)": [
+   "kmb"
+  ],
+  "R8+3+DISNEYLAND+Lantau Link BBI (Circular)": [
+   "kmb"
+  ],
+  "R934+1+TSUEN WAN (BAYVIEW GARDEN)+CAUSEWAY BAY (VICTORIA PARK)": [
+   "kmb"
+  ],
+  "R936+1+TSUEN WAN (SHEK WAI KOK)+CAUSEWAY BAY (VICTORIA PARK)": [
+   "kmb"
+  ],
+  "R948+1+TSING YI (CHEUNG WANG ESTATE)+CAUSEWAY BAY (VICTORIA PARK)": [
+   "kmb"
+  ],
+  "SIL+1+Admiralty+South Horizons": [
+   "mtr"
+  ],
+  "SIL+1+South Horizons+Admiralty": [
+   "mtr"
+  ],
+  "SP1+1+KAI TAK SPORTS PARK+HANG HAU (NORTH) (TSEUNG KWAN O HOSPITAL)": [
+   "kmb"
+  ],
+  "SP10+1+KAI TAK SPORTS PARK+CENTRAL (MACAO FERRY)": [
+   "kmb"
+  ],
+  "SP10+1+Kai Tak Sports Park+Central (Macao Ferry)": [
+   "ctb"
+  ],
+  "SP11+1+Kai Tak Sports Park+Siu Sai Wan (Island Resort)": [
+   "ctb"
+  ],
+  "SP12+1+KAI TAK SPORTS PARK+LOK MA CHAU": [
+   "kmb"
+  ],
+  "SP12+1+Kai Tak Sports Park+Lok Ma Chau (San Tin)": [
+   "ctb"
+  ],
+  "SP2+1+Kai Tak Sports Park+Mong Kok": [
+   "ctb"
+  ],
+  "SP2A+1+Kai Tak Sports Park+Tsim Sha Tsui": [
+   "ctb"
+  ],
+  "SP3+1+KAI TAK SPORTS PARK+CHING FU COURT": [
+   "kmb"
+  ],
+  "SP5A+1+KAI TAK SPORTS PARK+TUEN MUN PIER HEAD": [
+   "kmb"
+  ],
+  "SP5B+1+Kai Tak Sports Park+Tuen Mun (Ching Tin and Wo Tin)": [
+   "ctb"
+  ],
+  "SP6+1+KAI TAK SPORTS PARK+TIN HENG ESTATE": [
+   "kmb"
+  ],
+  "SP7+1+KAI TAK SPORTS PARK+SHEUNG SHUI": [
+   "kmb"
+  ],
+  "SP9+1+Kai Tak Sports Park+LOHAS Park": [
+   "ctb"
+  ],
+  "SPR+1+Tin Yat+Siu Hong": [
+   "lightRail"
+  ],
+  "TCL+1+Hong Kong+Tung Chung": [
+   "mtr"
+  ],
+  "TCL+1+Tung Chung+Hong Kong": [
+   "mtr"
+  ],
+  "TKL+1+LOHAS Park+Tiu Keng Leng": [
+   "mtr"
+  ],
+  "TKL+1+North Point+Po Lam": [
+   "mtr"
+  ],
+  "TKL+1+Po Lam+North Point": [
+   "mtr"
+  ],
+  "TKL+1+Tiu Keng Leng+LOHAS Park": [
+   "mtr"
+  ],
+  "TML+1+Tuen Mun+Wu Kai Sha": [
+   "mtr"
+  ],
+  "TML+1+Wu Kai Sha+Tuen Mun": [
+   "mtr"
+  ],
+  "TWL+1+Central+Tsuen Wan": [
+   "mtr"
+  ],
+  "TWL+1+Tsuen Wan+Central": [
+   "mtr"
+  ],
+  "X1+1+AsiaWorld-Expo+TUNG CHUNG STATION": [
+   "kmb"
+  ],
+  "X1+1+AsiaWorld-Expo+Tung Chung Station": [
+   "ctb"
+  ],
+  "X1+1+TUNG CHUNG STATION+AsiaWorld-Expo": [
+   "kmb"
+  ],
+  "X1+1+Tung Chung Station+AsiaWorld-Expo": [
+   "ctb"
+  ],
+  "X33+1+AsiaWorld-Expo+HUNG FUK ESTATE, HUNG YUEN ROAD": [
+   "kmb"
+  ],
+  "X36+1+AsiaWorld-Expo+KAM SHEUNG ROAD STATION": [
+   "kmb"
+  ],
+  "X40+1+AsiaWorld-Expo+WU KAI SHA STATION": [
+   "kmb"
+  ],
+  "X43+1+AsiaWorld-Expo+FANLING (LUEN WO HUI)": [
+   "kmb"
+  ],
+  "X47+1+AsiaWorld-Expo+TAI PO (FU HENG)": [
+   "kmb"
+  ],
+  "X797+1+Fire and Ambulance Services Academy+Tiu Keng Leng Station": [
+   "ctb"
+  ],
+  "X797+1+Tiu Keng Leng Station+Fire and Ambulance Services Academy": [
+   "ctb"
+  ],
+  "X90+1+FIRE AND AMBULANCE SERVICES ACADEMY+HUNG NGOK HOUSE": [
+   "kmb"
+  ],
+  "X90+1+WONG TAI SIN STATION+FIRE AND AMBULANCE SERVICES ACADEMY": [
+   "kmb"
+  ]
+ }
+}

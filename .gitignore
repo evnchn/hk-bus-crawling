@@ -14,3 +14,4 @@ gtfs-en
 route-ts
 
 .DS_Store
+!crawling/unmatched.baseline.json
