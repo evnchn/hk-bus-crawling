@@ -123,6 +123,11 @@ def importRouteListJson(co, trustServiceType=True):
             found = True
             route['stops'].append((co, _route['stops']))
             route['bound'][co] = _route['bound']
+            if route['gtfsId'] is None and _route.get('gtfs'):
+              route['gtfsId'] = _route['gtfs'][0]
+              for key in ('fares', 'faresHoliday', 'freq', 'jt'):
+                if route[key] is None:
+                  route[key] = _route.get(key)
         elif _route['orig_en'].upper() == route['orig']['en'].upper() and _route['dest_en'].upper() == route['dest']['en'].upper():
           speicalType = int(route['serviceType']) + 1
           if _route["route"] == '606' and _route['dest_tc'].startswith("彩雲"):
