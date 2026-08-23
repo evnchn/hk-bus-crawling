@@ -1,8 +1,11 @@
 import logging
 import math
 import json
+import os
 import time
 from haversine import haversine, Unit
+
+logger = logging.getLogger(__name__)
 
 
 def get_stop_group(
@@ -83,6 +86,99 @@ def get_stop_group(
   return [stop for stop in stop_group if stop[1] != stop_id]
   # return stop_group
 
+
+RAIL_CO = ('mtr', 'lightRail')
+RAIL_STATION_AREAS_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), 'railStationAreas.geojson')
+
+
+def is_point_in_ring(lat, lng, ring):
+  """Ray casting against a GeoJSON linear ring of [lng, lat] pairs."""
+  inside = False
+  previous = len(ring) - 1
+  for current, (lng_c, lat_c) in enumerate(ring):
+    lng_p, lat_p = ring[previous]
+    if ((lat_c > lat) != (lat_p > lat) and
+            lng < (lng_p - lng_c) * (lat - lat_c) / (lat_p - lat_c) + lng_c):
+      inside = not inside
+    previous = current
+  return inside
+
+
+def valid_ring(feature):
+  """The exterior ring of a Polygon feature, or None if it is unusable.
+
+  The areas are meant to be hand-edited, so one bad edit must not take the
+  nightly crawl down with it.
+  """
+  try:
+    geometry = feature['geometry']
+    if geometry['type'] != 'Polygon':
+      return None
+    ring = geometry['coordinates'][0]
+    if len(ring) < 4 or ring[0] != ring[-1]:
+      return None
+    for lng, lat in ring:
+      if not (isinstance(lng, (int, float)) and isinstance(lat, (int, float))):
+        return None
+    return ring
+  except (KeyError, IndexError, TypeError, ValueError):
+    return None
+
+
+def link_rail_station_areas(
+        route_list,
+        stop_list,
+        stop_map,
+        areas_path=RAIL_STATION_AREAS_PATH):
+  """Group the rail stops that fall inside the same rail station area.
+
+  get_stop_group() cannot bridge a heavy rail to light rail interchange: the
+  platforms are 72m to 232m apart, and the candidate search only reads the
+  stop's own cell in a ~100m grid, so raising DISTANCE_THRESHOLD does not
+  reach them either. A station area states which platforms belong to one
+  station rather than inferring it from how close they happen to be.
+
+  The areas are checked-in editable data, see buildRailStationAreas.py.
+  """
+  try:
+    with open(areas_path, 'r', encoding='UTF-8') as f:
+      areas = json.load(f)['features']
+  except (OSError, KeyError, ValueError):
+    logger.exception('could not read rail station areas from %s', areas_path)
+    return 0
+
+  co_of = {}
+  for route in route_list.values():
+    for co, co_stops in route.get('stops', {}).items():
+      if co in RAIL_CO:
+        for stop_id in co_stops:
+          # a stop can be routed but un-geocoded, see lightRail.py
+          if stop_list.get(stop_id, {}).get('location'):
+            co_of[stop_id] = co
+
+  linked = 0
+  for area in areas:
+    ring = valid_ring(area)
+    if ring is None:
+      logger.warning('skipping a malformed feature in %s', areas_path)
+      continue
+    inside = [stop_id for stop_id in sorted(co_of)
+              if is_point_in_ring(stop_list[stop_id]['location']['lat'],
+                                  stop_list[stop_id]['location']['lng'], ring)]
+    for stop_id in inside:
+      # only pair ACROSS operators. Which platforms of one operator belong
+      # together is already decided by get_stop_group()'s bearing filter, and
+      # that call is deliberately direction-aware -- do not overrule it here.
+      others = [i for i in inside if co_of[i] != co_of[stop_id]]
+      if not others:
+        continue
+      group = stop_map.setdefault(stop_id, [])
+      for other_id in others:
+        if not any(entry[1] == other_id for entry in group):
+          group.append([co_of[other_id], other_id])
+          linked += 1
+  return linked
 
 def get_bearing(a, b):
   φ1 = math.radians(a['lat'])
@@ -241,6 +337,9 @@ def merge_stop_list():
   logger.info(
       f"Processed {count} stops ({group_count} groups) at {(time.time() - start_time) * 1000:.2f}ms")
 
+  linked = link_rail_station_areas(route_list, stop_list, stop_map)
+  logger.info(f"Linked {linked} rail station area stop entries")
+
   with open('stopMap.json', 'w', encoding='UTF-8') as f:
     json.dump(stop_map, f, indent=4)
 
@@ -275,5 +374,4 @@ def merge_stop_list():
 
 if __name__ == "__main__":
   logging.basicConfig(level=logging.INFO)
-  logger = logging.getLogger(__name__)
   merge_stop_list()
