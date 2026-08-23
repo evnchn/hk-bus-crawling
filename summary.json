@@ -1,0 +1,49 @@
+{
+ "routes": {
+  "added": [],
+  "removed": [],
+  "changed": [],
+  "total_before": 3765,
+  "total_after": 3765
+ },
+ "stops": {
+  "added": [],
+  "removed": [],
+  "renamed": [],
+  "moved": [],
+  "total_before": 15261,
+  "total_after": 15261
+ },
+ "holidays": {
+  "added": [],
+  "removed": []
+ },
+ "health": {
+  "routes_with_dangling_stops": {},
+  "dangling_stop_refs": 0,
+  "orphan_stops": [
+   "003978",
+   "1310CE826AAD8F50",
+   "20008227",
+   "20015013",
+   "D95CAEA4D5C491E2"
+  ],
+  "stops_outside_hk_bbox": [],
+  "stops_missing_a_name": [],
+  "empty_routes": []
+ },
+ "health_before": {
+  "routes_with_dangling_stops": {},
+  "dangling_stop_refs": 0,
+  "orphan_stops": [
+   "003978",
+   "1310CE826AAD8F50",
+   "20008227",
+   "20015013",
+   "D95CAEA4D5C491E2"
+  ],
+  "stops_outside_hk_bbox": [],
+  "stops_missing_a_name": [],
+  "empty_routes": []
+ }
+}

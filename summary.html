@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>資料變更 · hk-bus-crawling</title>
+<meta name="description" content="每日巴士資料變更摘要 · daily summary of Hong Kong public transport data changes">
+<style>
+:root {
+  --ground:#0E1012; --panel:#171A1D; --sunk:#101315;
+  --ink:#EDEAE3; --muted:#8A9098; --rule:#262A2E;
+  --added:#4FB477; --removed:#E2564D; --changed:#F1AD00; --quiet:#6E757C;
+  --plate:#EDEAE3;
+  --zh:"PingFang HK","Noto Sans HK","Hiragino Sans CNS","Microsoft JhengHei",sans-serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,var(--zh);
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.5;padding:0 0 4rem;-webkit-text-size-adjust:100%}
+.wrap{max-width:60rem;margin:0 auto;padding:0 1rem}
+a{color:var(--ink)}
+code{font-family:var(--mono);font-size:.78em;color:var(--muted);word-break:break-all}
+em{font-style:normal;font-family:var(--mono);font-size:.72em;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted)}
+.arrow{color:var(--muted);padding:0 .15em}
+
+header{border-bottom:1px solid var(--rule);padding:2.5rem 0 1.5rem;margin-bottom:1.5rem}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted)}
+h1{font-size:clamp(1.6rem,6vw,2.4rem);font-weight:650;letter-spacing:-.01em;margin:.4rem 0 .1rem}
+h1 span{color:var(--muted);font-weight:400}
+.stamp{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-top:.6rem;
+  display:flex;flex-wrap:wrap;gap:.25rem 1.2rem}
+
+/* The tally strip is the one loud element: a destination-blind band of counts. */
+.tally{display:grid;grid-template-columns:repeat(auto-fit,minmax(7.2rem,1fr));
+  background:var(--panel);border:1px solid var(--rule);border-radius:3px;overflow:hidden;
+  margin-bottom:2.5rem}
+.tally>div{padding:.9rem 1rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.tally .n{font-family:var(--mono);font-size:1.75rem;font-weight:600;line-height:1;
+  font-variant-numeric:tabular-nums}
+.tally .n.zero{color:var(--quiet)}
+.tally .l{font-size:.75rem;color:var(--muted);margin-top:.35rem}
+.tally .l em{display:block;margin-top:.1rem}
+
+h2{font-size:.78rem;font-family:var(--mono);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);padding-bottom:.5rem;border-bottom:1px solid var(--rule);margin:2.5rem 0 1rem}
+h3{font-size:.72rem;font-family:var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin:1.25rem 0 .4rem}
+
+.route{display:flex;gap:.85rem;padding:1rem 0;border-bottom:1px solid var(--rule)}
+/* Route plate: 2px box and boxy corners, the way a route number is printed
+   on a Hong Kong stop pole. */
+.plate{flex:0 0 auto}
+.plate span{display:inline-block;min-width:3.4rem;text-align:center;
+  font-family:var(--mono);font-weight:700;font-size:1rem;letter-spacing:.02em;
+  padding:.3rem .4rem;color:var(--ground);background:var(--plate);
+  border-radius:2px;border-bottom:3px solid var(--op)}
+.body{min-width:0;flex:1}
+.op{font-size:.8rem;color:var(--op);margin-bottom:.35rem}
+.op em{color:var(--muted)}
+.row{display:flex;gap:.7rem;padding:.4rem 0}
+.row+.row{border-top:1px dashed var(--rule)}
+.variant{flex:0 0 1.2rem;font-family:var(--mono);font-size:.72rem;color:var(--quiet);
+  padding-top:.15rem}
+.detail{min-width:0;flex:1}
+.blind{font-size:.95rem;line-height:1.35;font-family:var(--zh)}
+.blind-en{font-size:.76rem;line-height:1.3;color:var(--muted);margin-top:.05rem}
+.row.removed .blind,.row.removed .blind-en{text-decoration:line-through;
+  text-decoration-color:var(--removed)}
+.was{font-size:.78rem;color:var(--muted);margin-top:.1rem}
+.chip{font-size:.82rem;margin-top:.3rem;padding-left:.75rem;
+  border-left:2px solid var(--quiet);color:var(--ink)}
+.chip.added{border-color:var(--added)}
+.chip.removed{border-color:var(--removed)}
+.chip.changed,.chip.terminus{border-color:var(--changed)}
+.chip.quiet{border-color:var(--rule);color:var(--muted)}
+.more{color:var(--muted);font-family:var(--mono);font-size:.75em}
+
+.block ul{list-style:none;padding:0}
+.block li{padding:.3rem 0;border-bottom:1px solid var(--rule);font-size:.88rem}
+details{margin:.5rem 0}
+summary{cursor:pointer;font-size:.8rem;color:var(--muted);font-family:var(--mono)}
+summary:focus-visible,a:focus-visible{outline:2px solid var(--changed);outline-offset:2px}
+
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:3px}
+.check{background:var(--panel);padding:.9rem 1rem}
+.check .count{font-family:var(--mono);font-size:1.4rem;font-weight:600;line-height:1}
+.check.ok .count{color:var(--quiet)}
+.check.flag .count{color:var(--changed)}
+.check .what{font-size:.8rem;color:var(--muted);margin-top:.3rem}
+.empty{padding:2rem 0;color:var(--muted)}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);
+  font-size:.78rem;color:var(--quiet)}
+@media (max-width:480px){.route{gap:.6rem}.plate span{min-width:2.9rem;font-size:.9rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">hkbus / hk-bus-crawling</div>
+  <h1>資料變更 <span>Data changes</span></h1>
+  <div class="stamp">
+    <span>2026-08-23 20:49 HKT</span>
+    <span>data.hkbus.app <span class="arrow">→</span> this run</span>
+    <span>3765 路線 · 15261 車站</span>
+  </div>
+</header>
+
+<div class="tally"><div><div class="n zero">0</div><div class="l">路線改動<em>ROUTES CHANGED</em></div></div><div><div class="n zero">0</div><div class="l">新增路線<em>ROUTES ADDED</em></div></div><div><div class="n zero">0</div><div class="l">刪除路線<em>ROUTES REMOVED</em></div></div><div><div class="n zero">0</div><div class="l">新增車站<em>STOPS ADDED</em></div></div><div><div class="n zero">0</div><div class="l">刪除車站<em>STOPS REMOVED</em></div></div><div><div class="n zero">0</div><div class="l">車站改名<em>STOPS RENAMED</em></div></div><div><div class="n zero">0</div><div class="l">車站移位<em>STOPS MOVED</em></div></div></div>
+
+<div class="empty">今次更新無資料變更。<br><em>No route or stop changes in this run.</em></div>
+
+
+
+
+<h2>資料檢查 Data health</h2>
+<div class="checks"><div class="check ok"><div class="count">0</div><div class="what">無效站號引用 <em>DANGLING STOP REFS</em></div></div><div class="check flag"><div class="count">5</div><div class="what">無路線經過的車站 <em>ORPHAN STOPS</em></div><details><summary>展開 · show</summary><ul><li><code>003978</code></li><li><code>1310CE826AAD8F50</code></li><li><code>20008227</code></li><li><code>20015013</code></li><li><code>D95CAEA4D5C491E2</code></li></ul></details></div><div class="check ok"><div class="count">0</div><div class="what">座標不在香港範圍 <em>COORDS OUTSIDE HK</em></div></div><div class="check ok"><div class="count">0</div><div class="what">缺中文或英文站名 <em>MISSING A NAME</em></div></div><div class="check ok"><div class="count">0</div><div class="what">無車站的路線 <em>EMPTY ROUTES</em></div></div></div>
+
+<footer>
+  由 <a href="https://github.com/hkbus/hk-bus-crawling">hkbus/hk-bus-crawling</a> 自動產生 ·
+  generated from <code>routeFareList.min.json</code>
+</footer>
+</div>
+</body>
+</html>
