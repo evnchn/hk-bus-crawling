@@ -180,6 +180,7 @@ def link_rail_station_areas(
           linked += 1
   return linked
 
+
 def get_bearing(a, b):
   φ1 = math.radians(a['lat'])
   φ2 = math.radians(b['lat'])
