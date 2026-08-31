@@ -152,7 +152,25 @@ def test_a_nameless_stop_is_not_a_second_station():
   finally:
     logger.removeHandler(handler)
     os.remove(path)
-  assert not [r for r in records if r.levelno == logging.WARNING]
+  assert not [r for r in records if 'more than one' in r.getMessage()]
+
+
+def test_warns_about_a_rail_stop_no_area_covers():
+  """A new station nobody has drawn yet must not fail silently."""
+  path = areas_file(ELSEWHERE)
+  records = []
+  handler = logging.Handler()
+  handler.emit = records.append
+  logger = logging.getLogger('mergeStopList')
+  logger.addHandler(handler)
+  try:
+    link_rail_station_areas(ROUTE_LIST, STOP_LIST, {}, areas_path=path)
+  finally:
+    logger.removeHandler(handler)
+    os.remove(path)
+  warnings = [r for r in records if r.levelno == logging.WARNING]
+  assert warnings, 'an uncovered rail stop must warn'
+  assert 'HEAVY' in warnings[0].getMessage()
 
 
 def test_shipped_areas_are_usable():
@@ -179,5 +197,6 @@ if __name__ == '__main__':
   test_a_bad_hand_edit_is_skipped_not_fatal()
   test_warns_when_one_area_covers_two_stations()
   test_a_nameless_stop_is_not_a_second_station()
+  test_warns_about_a_rail_stop_no_area_covers()
   test_shipped_areas_are_usable()
   print('ok')

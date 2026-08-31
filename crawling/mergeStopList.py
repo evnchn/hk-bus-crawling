@@ -158,6 +158,7 @@ def link_rail_station_areas(
             co_of[stop_id] = co
 
   linked = 0
+  covered = set()
   for area in areas:
     ring = valid_ring(area)
     if ring is None:
@@ -166,6 +167,7 @@ def link_rail_station_areas(
     inside = [stop_id for stop_id in sorted(co_of)
               if is_point_in_ring(stop_list[stop_id]['location']['lat'],
                                   stop_list[stop_id]['location']['lng'], ring)]
+    covered.update(inside)
     names = {stop_list[i].get('name', {}).get('zh') for i in inside}
     names = {name for name in names if name}
     if len(names) > 1:
@@ -183,6 +185,10 @@ def link_rail_station_areas(
         if not any(entry[1] == other_id for entry in group):
           group.append([co_of[other_id], other_id])
           linked += 1
+  missed = sorted(set(co_of) - covered)
+  if missed:
+    logger.warning('%d rail stops are in no station area: %s',
+                   len(missed), missed)
   return linked
 
 
