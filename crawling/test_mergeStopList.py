@@ -136,6 +136,24 @@ def test_warns_when_one_area_covers_two_stations():
   assert 'somewhere else' in warnings[0].getMessage()
 
 
+def test_a_nameless_stop_is_not_a_second_station():
+  """A stop with no zh name is missing data, not a neighbouring station."""
+  path = areas_file(SQUARE)
+  nameless = {'name': {'en': 'x'}, 'location': {'lat': 22.4425, 'lng': 114.0025}}
+  records = []
+  handler = logging.Handler()
+  handler.emit = records.append
+  logger = logging.getLogger('mergeStopList')
+  logger.addHandler(handler)
+  try:
+    link_rail_station_areas(
+        ROUTE_LIST, dict(STOP_LIST, LIGHT=nameless), {}, areas_path=path)
+  finally:
+    logger.removeHandler(handler)
+    os.remove(path)
+  assert not [r for r in records if r.levelno == logging.WARNING]
+
+
 def test_shipped_areas_are_usable():
   here = os.path.dirname(os.path.abspath(__file__))
   path = os.path.join(here, 'railStationAreas.geojson')
@@ -159,5 +177,6 @@ if __name__ == '__main__':
   test_survives_a_missing_areas_file_and_un_geocoded_stops()
   test_a_bad_hand_edit_is_skipped_not_fatal()
   test_warns_when_one_area_covers_two_stations()
+  test_a_nameless_stop_is_not_a_second_station()
   test_shipped_areas_are_usable()
   print('ok')

@@ -167,10 +167,10 @@ def link_rail_station_areas(
               if is_point_in_ring(stop_list[stop_id]['location']['lat'],
                                   stop_list[stop_id]['location']['lng'], ring)]
     names = {stop_list[i].get('name', {}).get('zh') for i in inside}
+    names = {name for name in names if name}
     if len(names) > 1:
       logger.warning('%s covers more than one station: %s',
-                     area.get('properties', {}).get('name_zh'),
-                     sorted(n for n in names if n))
+                     area.get('properties', {}).get('name_zh'), sorted(names))
     for stop_id in inside:
       # only pair ACROSS operators. Which platforms of one operator belong
       # together is already decided by get_stop_group()'s bearing filter, and
