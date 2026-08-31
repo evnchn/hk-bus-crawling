@@ -139,7 +139,8 @@ def test_warns_when_one_area_covers_two_stations():
 def test_a_nameless_stop_is_not_a_second_station():
   """A stop with no zh name is missing data, not a neighbouring station."""
   path = areas_file(SQUARE)
-  nameless = {'name': {'en': 'x'}, 'location': {'lat': 22.4425, 'lng': 114.0025}}
+  nameless = stop(22.4425, 114.0025)
+  del nameless['name']['zh']
   records = []
   handler = logging.Handler()
   handler.emit = records.append
