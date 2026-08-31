@@ -3,6 +3,7 @@
 Run: python crawling/test_mergeStopList.py
 """
 import json
+import logging
 import os
 import tempfile
 
@@ -26,8 +27,9 @@ def areas_file(*rings):
   return path
 
 
-def stop(lat, lng):
-  return {'name': {'zh': 'x', 'en': 'x'}, 'location': {'lat': lat, 'lng': lng}}
+def stop(lat, lng, name='x'):
+  return {'name': {'zh': name, 'en': name},
+          'location': {'lat': lat, 'lng': lng}}
 
 
 STOP_LIST = {
@@ -115,6 +117,25 @@ def test_a_bad_hand_edit_is_skipped_not_fatal():
   os.unlink(path)
 
 
+def test_warns_when_one_area_covers_two_stations():
+  """A polygon drawn too wide swallows a neighbour, so say so."""
+  path = areas_file(SQUARE)
+  stop_list = dict(STOP_LIST, LIGHT=stop(22.4425, 114.0025, 'somewhere else'))
+  records = []
+  handler = logging.Handler()
+  handler.emit = records.append
+  logger = logging.getLogger('mergeStopList')
+  logger.addHandler(handler)
+  try:
+    link_rail_station_areas(ROUTE_LIST, stop_list, {}, areas_path=path)
+  finally:
+    logger.removeHandler(handler)
+    os.remove(path)
+  warnings = [r for r in records if r.levelno == logging.WARNING]
+  assert warnings, 'a mixed area must warn'
+  assert 'somewhere else' in warnings[0].getMessage()
+
+
 def test_shipped_areas_are_usable():
   here = os.path.dirname(os.path.abspath(__file__))
   path = os.path.join(here, 'railStationAreas.geojson')
@@ -137,5 +158,6 @@ if __name__ == '__main__':
   test_is_idempotent_and_keeps_existing_entries()
   test_survives_a_missing_areas_file_and_un_geocoded_stops()
   test_a_bad_hand_edit_is_skipped_not_fatal()
+  test_warns_when_one_area_covers_two_stations()
   test_shipped_areas_are_usable()
   print('ok')
