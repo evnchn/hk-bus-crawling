@@ -81,6 +81,7 @@ jobs:
           python ./crawling/cleansing.py
           python ./crawling/mergeRoutes.py
           python ./crawling/mergeStopList.py
+          python ./crawling/fareCheck.py
           python ./crawling/routeCompare.py
           python ./crawling/mtrExits.py
 
@@ -104,6 +105,7 @@ jobs:
             stopList*
             stopMap*
             routeTime.json
+            fareMismatch.json
             gtfs
             gtfs.json
             routeGtfs*
