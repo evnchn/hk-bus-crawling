@@ -5,6 +5,16 @@ import time
 from haversine import haversine, Unit
 
 
+def get_stops_haversine_distance(stop_a, stop_b):
+  if stop_a['location']['lat'] == stop_b['location']['lat'] and stop_a['location']['lng'] == stop_b['location']['lng']:
+    return 0
+  return haversine(
+      (stop_a['location']['lat'], stop_a['location']['lng']),
+      (stop_b['location']['lat'], stop_b['location']['lng']),
+      unit=Unit.METERS  # specify that we want distance in meter, default is km
+  )
+
+
 def get_stop_group(
         route_list,
         stop_list,
@@ -14,15 +24,6 @@ def get_stop_group(
   DISTANCE_THRESHOLD = 50  # in metres
   BEARING_THRESHOLD = 45  # in degrees
   STOP_LIST_LIMIT = 50  # max number of stops in a group
-
-  def get_stops_haversine_distance(stop_a, stop_b):
-    if stop_a['location']['lat'] == stop_b['location']['lat'] and stop_a['location']['lng'] == stop_b['location']['lng']:
-      return 0
-    return haversine(
-        (stop_a['location']['lat'], stop_a['location']['lng']),
-        (stop_b['location']['lat'], stop_b['location']['lng']),
-        unit=Unit.METERS  # specify that we want distance in meter, default is km
-    )
 
   bearing_targets = stop_seq_mapping.get(stop_id, {}).get('bearings', [])
 
@@ -82,6 +83,50 @@ def get_stop_group(
   # final output stopMap
   return [stop for stop in stop_group if stop[1] != stop_id]
   # return stop_group
+
+
+RAIL_INTERCHANGE_CO = ('mtr', 'lightRail')
+RAIL_INTERCHANGE_DISTANCE_THRESHOLD = 500  # in metres
+
+
+def link_rail_interchanges(route_list, stop_list, stop_map):
+  """Link the MTR and Light Rail platforms of the same station by station name.
+
+  They are further apart than get_stop_group() can bridge -- Tin Shui Wai is
+  232m, and even a larger DISTANCE_THRESHOLD would not reach it because the
+  candidate search only looks at the 3x3 grid of ~100m cells around a stop.
+  Station name equality settles it without loosening grouping everywhere else.
+  """
+  by_name = {co: {} for co in RAIL_INTERCHANGE_CO}
+  for route in route_list.values():
+    for co, co_stops in route.get('stops', {}).items():
+      if co in by_name:
+        for stop_id in co_stops:
+          # a stop can be routed but un-geocoded, see lightRail.py
+          stop = stop_list.get(stop_id)
+          name = stop.get('name', {}).get('zh') if stop else None
+          if name:
+            by_name[co].setdefault(name, set()).add(stop_id)
+
+  def link(from_id, to_co, to_id):
+    group = stop_map.setdefault(from_id, [])
+    if not any(entry[1] == to_id for entry in group):
+      group.append([to_co, to_id])
+      return 1
+    return 0
+
+  mtr_co, light_rail_co = RAIL_INTERCHANGE_CO
+  linked = 0
+  for name, mtr_ids in by_name[mtr_co].items():
+    for mtr_id in mtr_ids:
+      for light_rail_id in by_name[light_rail_co].get(name, ()):
+        if get_stops_haversine_distance(
+                stop_list[mtr_id],
+                stop_list[light_rail_id]) > RAIL_INTERCHANGE_DISTANCE_THRESHOLD:
+          continue
+        linked += link(mtr_id, light_rail_co, light_rail_id)
+        linked += link(light_rail_id, mtr_co, mtr_id)
+  return linked
 
 
 def get_bearing(a, b):
@@ -240,6 +285,9 @@ def merge_stop_list():
 
   logger.info(
       f"Processed {count} stops ({group_count} groups) at {(time.time() - start_time) * 1000:.2f}ms")
+
+  linked = link_rail_interchanges(route_list, stop_list, stop_map)
+  logger.info(f"Linked {linked} rail interchange stop entries")
 
   with open('stopMap.json', 'w', encoding='UTF-8') as f:
     json.dump(stop_map, f, indent=4)
