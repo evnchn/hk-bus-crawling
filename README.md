@@ -49,6 +49,12 @@ print( route_ids )
 ### Usage
 Daily fetched JSON is in [gh-pages](https://github.com/hkbus/hk-bus-crawling/tree/gh-pages) or direct download [here](https://hkbus.github.io/hk-bus-crawling/routeFareList.min.json)
 
+What changed in the latest crawl is summarized at
+[summary.html](https://hkbus.github.io/hk-bus-crawling/summary.html) (machine-readable
+copy: [summary.json](https://hkbus.github.io/hk-bus-crawling/summary.json)), and posted
+to Telegram when `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` are configured as repository
+secrets.
+
 ### Installation
 
 To avoid the conflict of dependencies between python projects, it's better to create a fresh environment for this run:

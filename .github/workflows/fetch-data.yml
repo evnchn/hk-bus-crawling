@@ -112,6 +112,8 @@ jobs:
             route-ts/
             exits.mtr.json
             0versions.json
+            summary.html
+            summary.json
       - name: Update MD5
         run: |
           md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
@@ -133,6 +135,14 @@ jobs:
           exits.mtr.json \
           0versions.json \
           build/
+      - name: cp the change summary into deployment folder
+        # Best-effort: routeCompare.py logs and swallows a summary failure, so a
+        # missing summary must not redden a run whose data published fine. The
+        # previously published summary stays up because the deploy is clean:false.
+        continue-on-error: true
+        shell: bash
+        run: cp summary.html summary.json build/
+
       - name: cp route-ts into deployment folder
         shell: bash
         run: cp -r route-ts build
@@ -159,6 +169,37 @@ jobs:
             clean: false
             clean-exclude: |
               alpha/*
+
+      - name: Notify Telegram
+        # A Telegram outage must not turn the data pipeline red; the data is
+        # already published by the time this runs.
+        continue-on-error: true
+        shell: bash
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_MESSAGE_THREAD_ID: ${{ secrets.TELEGRAM_MESSAGE_THREAD_ID }}
+        run: |
+          # routeCompare.py writes telegram.txt only when the data actually
+          # moved, so an absent or empty file means there is nothing to say.
+          if [ ! -s telegram.txt ]
+          then
+            echo "nothing changed in this run"
+            exit 0
+          fi
+          if [ -z "${TELEGRAM_BOT_TOKEN}" ] || [ -z "${TELEGRAM_CHAT_ID}" ]
+          then
+            echo "no Telegram credentials configured, printing instead"
+            cat telegram.txt
+            exit 0
+          fi
+          curl -sS --fail-with-body \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "message_thread_id=${TELEGRAM_MESSAGE_THREAD_ID}" \
+            --data-urlencode "parse_mode=HTML" \
+            --data-urlencode "link_preview_options={\"is_disabled\":true}" \
+            --data-urlencode "text@telegram.txt" > /dev/null
 
       - name: Trigger alpha build on schedule
         if: ( github.event_name == 'schedule' || github.event_name=='workflow_dispatch') && steps.alpha-check.outputs.alpha_newer == 'yes'

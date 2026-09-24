@@ -11,6 +11,7 @@ import xxhash
 import re
 
 from crawl_utils import emitRequest
+from summarizeChanges import write_summary
 
 
 async def routeCompare():
@@ -53,6 +54,25 @@ async def routeCompare():
       filename = re.sub(r'[\\\/\:\*\?\"\<\>\|]', '', oldKey).upper()
       with open(os.path.join("route-ts", filename), "w", encoding='utf-8') as f:
         f.write(str(int(time.time())))
+
+  # Same two snapshots, read for people instead of for timestamps. A failure
+  # here must not lose the route-ts output the app depends on, and the workflow
+  # copies the summary best-effort for the same reason.
+  #
+  # Note the "before" side is always the published master JSON, inherited from
+  # the comparison above. On an alpha run the summary therefore describes
+  # alpha-vs-master drift, not alpha-vs-previous-alpha. Fixing that means
+  # fetching the alpha JSON separately; left alone so this stays one behaviour
+  # rather than two.
+  try:
+    write_summary(
+        oldDb,
+        newDb,
+        html_path='summary.html',
+        json_path='summary.json',
+        telegram_path='telegram.txt')
+  except Exception:
+    logging.getLogger(__name__).exception('could not write the change summary')
 
 if __name__ == '__main__':
   logging.basicConfig(level=logging.INFO)
